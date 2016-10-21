@@ -1,0 +1,22 @@
+<h2>Edit Album</h2><br />
+<small>(Drag the photos the sections)</small><br />
+<div class='holder remove_from' id='left'>
+<h2>Photos</h2><br />
+
+<% @photos.each do |photo| %>
+  <% if photo.album_id != @album.id %>
+    <%= image_tag(photo.photo.url(:thumb), :class => 'image', :data => {:nick => user(photo.user_id).nick, :album_id => @album.id, :id => photo.id}) %>
+  <% end %>
+<% end %>
+</div>
+
+<div class='holder add_to' id='right'>
+<h2>Photos in Album</h2>
+<% @album.photos.each do |photo| %>
+  <%= image_tag(photo.photo.url(:thumb), :class => 'image', :data => {:nick => user(photo.user_id).nick, :album_id => @album.id, :id => photo.id}) %>
+<% end %>
+</div>
+
+<br /><br /><br />
+<%= link_to "Done", user_path(user(@album.user_id).nick), :class => 'button' %>
+

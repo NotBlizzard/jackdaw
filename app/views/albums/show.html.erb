@@ -1,0 +1,20 @@
+<% if current_user && current_user.id == @album.user_id %>
+<% end %>
+<h1><%= @album.title %></h1><br />
+<% if current_user && current_user.id == @album.user_id %>
+  <%= link_to "", destroy_user_album_path(current_user.nick, @album.slug), :data => {:confirm => 'Are you sure?'}, :method => 'delete', :class => 'fa fa-trash-o delete-picture-album' %>
+  <%= link_to "", edit_user_album_path(current_user.nick, @album.slug), :class => 'fa fa-edit' %>
+<% end %>
+<div class='holder'>
+<% if @album.photos %>
+  <% @album.photos.each do |photo| %>
+    <%= link_to image_tag(photo.photo.url(:medium)), user_photo_path(user(photo.user_id).nick, photo.slug) %><br />
+  <% end %>
+<% else %>
+  <h2>No Photos</h2>
+  <% if current_user && @album.user_id == current_user.id %>
+    <%= link_to "Add Photos", edit_user_album_path(current_user.nick, @album.slug) %>
+  <% end %>
+<% end %>
+</div>
+

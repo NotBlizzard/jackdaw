@@ -1,0 +1,23 @@
+<h2>Upload Photo</h2>
+<% if @photo.errors.any? %>
+  <h2>Errors:</h2>
+  <ul>
+  <% @photo.errors.full_messages.each do |msg| %>
+    <li class='error'><%= msg %></li><br />
+
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @photo, :html => {:multipart => true}, :url => {:action => :create, :controller => :photos} do |p| %>
+    <%= p.label :title %><br />
+    <%= p.text_field :title %><br />
+
+    <label>Tags(seperate by commas)</label><br />
+    <%= p.text_field :tags %><br />
+
+    <%= p.file_field :photo, :class => 'upload', :id => 'upload_hidden' %><br />
+    <button class='button upload-button' id='upload'>Choose File</button>
+
+    <%= p.submit "Upload", :class => 'button' %>
+  <% end %>

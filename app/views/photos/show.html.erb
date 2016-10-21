@@ -1,0 +1,37 @@
+<h1><%= @photo.title %></h1>
+<% if current_user && current_user.id == @photo.user_id %>
+  <%= link_to "", destroy_user_photo_path(current_user, @photo), :data => {:confirm => 'Are you sure?'}, :method => 'delete', :class => 'fa fa-trash-o delete-picture-album' %>
+  <%= link_to "", edit_user_photo_path(current_user.nick, @photo.slug), :class => 'fa fa-edit' %>
+<% end %>
+<div class='holder'>
+<%= link_to image_tag(@photo.photo.url), @photo.photo.url %><br />
+<p>Tags: </p><br />
+<ul id='tags'>
+<% @photo.tags.each do |tag| %>
+  <li><%= link_to tag, tag_path(tag) %></li>
+<% end %>
+</ul>
+</div>
+<!-- For Now -->
+<center>
+<div id='comments'>
+<% @photo.comments.reverse.each do |c| %>
+  <div class="comment" id="<%= c.id %>">
+    <%= image_tag(gravatar(user(c.user_id), 40), :class => 'comment-avatar', :title => user(c.user_id).nick) %>
+    <% if current_user && (current_user.id == c.user_id) %>
+      <%= link_to "", destroy_comment_path(c), :remote => true, :data =>  {:confirm => "Are you sure?"}, method: :post, :class => 'fa fa-times rails-delete' %>
+    <% end %>
+    <span class='comment-nick'><%= user(c.user_id).nick %></span><br />
+    <span class='comment-date'><%= c.created_at.to_formatted_s(:short) %></span><br />
+    <p class='comment-text'><%= c.content %></p>
+  </div>
+<% end %>
+</div>
+</center>
+
+<% if current_user %>
+<%= form_for @comment, :remote => true, :id=> 'new_comment', :url => {:action => :create, :controller => :comments, :photo_id => @photo.id} do |p| %>
+  <%= p.text_area :content, :class => 'new-comment-content' %><br />
+  <%= p.submit "Submit", :class => 'button' %>
+<% end %>
+<% end %>

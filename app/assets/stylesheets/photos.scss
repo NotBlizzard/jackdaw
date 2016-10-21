@@ -1,0 +1,96 @@
+// Place all the styles related to the photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+input {
+  border: none;
+}
+.holder {
+  background-color: #34495e;
+  padding: 20px;
+}
+.delete {
+  color: white;
+  text-decoration: none;
+}
+.upload {
+  display: none;
+}
+.error {
+  color: #c0392b;
+}
+#tags li {
+  display: inline;
+  border: 1px solid #2980b9;
+  padding: 3px;
+  margin: 5px;
+  margin-top: 10px;
+  background-color: #2980b9;
+  border-radius: 4px;
+}
+.button {
+  padding: 5px;
+  color: white;
+  background-color: #3498db;
+  margin: 5px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #2980b9;
+  border: none;
+}
+.photoset {
+  text-align: left !important;
+}
+input, input[type="text"] {
+  height: 30px;
+  width: 200px;
+}
+
+.comment {
+  text-align: left;
+  background-color: #34495e;
+  border-radius: 4px;
+  width: 400px;
+  margin: 8px;
+  text-align: center;
+  display: table;
+  vertical-align: middle;
+  padding: 10px;
+  word-wrap: break-word;
+}
+.rails-delete {
+  float: right;
+  padding: 4px;
+  color: #e74c3c;
+}
+.delete-picture-album {
+  float: none;
+  color: #e74c3c;
+}
+
+.comment-date {
+  font-size: 12px;
+  float: left;
+  text-align: bottom;
+}
+.new-comment-content {
+  background-color: #34495e;
+  border: none;
+  margin-top: 8px;
+  color: #fff;
+  resize: none;
+  width: 400px;
+  height: 100px;
+}
+.comment-avatar {
+  float: left;
+  margin-bottom: 5px;
+
+}
+.comment-text {
+  float: left;
+  word-wrap: break-word;
+}
+.comment-nick {
+  float: left;
+  margin-left: 4px;
+  vertical-align: middle;
+}

@@ -1,0 +1,9 @@
+<h2>New Album</h2>
+
+<%= form_for @album, :url => {:action => :create, :controller => :albums} do |p| %>
+    <%= p.label :title %><br />
+    <%= p.text_field :title %><br />
+
+
+    <%= p.submit "Create", :class => 'button' %>
+<% end %>

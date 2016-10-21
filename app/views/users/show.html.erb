@@ -1,0 +1,18 @@
+<h1><%= @user.nick %></h1>
+<%= image_tag(gravatar(@user), :class => 'avatar', :title => 'Hosted by Gravatar.') %><br />
+<% if @user.photos %>
+  <h2>Images</h2><br />
+  <div id='photoset'>
+  <% @user.photos.each do |photo| %>
+    <%= link_to image_tag(photo.photo.url(:thumb)), user_photo_path(@user.nick, photo.slug) %>
+  <% end %>
+  </div>
+<% else %>
+  <h2>No Images</h2>
+<% end %>
+<% if @user.albums %>
+  <h2>Albums</h2>
+  <% @user.albums.each do |album| %>
+    <%= link_to album.title, user_album_path(@user.nick, album.slug) %><br />
+  <% end %>
+<% end %>

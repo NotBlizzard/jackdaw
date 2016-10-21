@@ -1,0 +1,6 @@
+<h2>Latest Images</h2>
+<br />
+
+<% @photos.each do |p| %>
+      <%= link_to image_tag(p.photo.url(:thumb)), user_photo_path(user(p.user_id).nick, p.slug) %>
+<% end %>

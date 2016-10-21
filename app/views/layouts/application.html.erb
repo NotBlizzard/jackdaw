@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jackdaw</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/1.0.1/js/md5.min.js"></script>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
+</head>
+<body>
+<% if current_user %>
+  <div class='control'>
+    <ul>
+      <li><%= link_to "Upload", new_user_photo_path %></li>|
+      <li><%= link_to "Logout", destroy_user_session_path %></li>|
+      <li><%= link_to "Profile", user_path(current_user.nick) %></li>|
+      <li><%= link_to "Latest", photos_path %></li>|
+      <li><%= link_to "New Album", new_user_album_path %></li>
+    </ul>
+  </div>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+// Place all the styles related to the Albums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.image {
+  float: left;
+}
+.add_to {
+  z-index: -1;
+}
+#left {
+  height: 60vh;
+  width: 40%;
+  float: left;
+}
+#right {
+  height: 60vh;
+  width: 40%;
+  float: right;
+}
